@@ -2,6 +2,7 @@ app.controller('wallController', ['$scope', '$location', 'userFactory', '$cookie
     $scope.newUser = {};
     $scope.errors = false;
     $scope.messages = [];
+    $scope.newPost ={};
 
 
     if ($cookies.getObject('newUser')) {
@@ -19,13 +20,32 @@ app.controller('wallController', ['$scope', '$location', 'userFactory', '$cookie
     $scope.getUser();
 
 
+    $scope.addPost = function() {
+        $scope.newPost.userid = $scope.newUser._id;
+        $scope.newPost.name = $scope.newUser.name;
+        userFactory.addPost($scope.addPost, function(data) {
+            console.log(data)
+            $scope.messages = [];
+            if (data.errors) {
+                $scope.errors = true;
+                for (err in data.errors) {
+                    console.log(data.errors[err].message)
+                    $scope.messages.push(data.errors[err].message)
+                }
+            }
 
-
-    $scope.logout = function() {
-        $cookies.remove('newUser')
-        $location.url('/')
-
+        })
+        $scope.getPost();
     }
+
+
+    $scope.getPost = function() {
+        userFactory.getPost(function(data) {
+            $scope.posts= data
+        })
+    };
+    $scope.getPost();
+
 
 
 }])

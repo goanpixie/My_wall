@@ -5,8 +5,8 @@ module.exports = function(app){
 
 	app.post('/createUser', users.createUser)
 	app.get('/get_user', users.getUser)
-	// app.post('/add_wish', users.addWish)
-	// app.get('/get_wish', users.getWish)
+	app.post('/add_post', users.addPost)
+	app.get('/get_post', users.getPost)
 	// app.get('/getWishByUser/:_user', users.getWishByUser)
 
 }

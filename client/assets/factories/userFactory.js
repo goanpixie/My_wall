@@ -16,6 +16,21 @@ app.factory('userFactory', ['$http', function($http) {
 
         }
 
+        this.addPost = function(post, callback) {
+            console.log("I am in addPost method-->factory" + post)
+            $http.post('/add_post', post).then(function(r_data) {
+                callback(r_data.data)
+            })
+        }
+
+
+        this.getPost = function(callback) {
+            $http.get('/get_post').then(function(r_data) {
+                console.log(r_data)
+                callback(r_data.data)
+            })
+        }
+
 }
 
     return new userFactory();

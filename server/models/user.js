@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema
 
 var UserSchema = new mongoose.Schema({
+  _post: [{type: Schema.Types.ObjectId, ref: 'Post'}],
     name: {
     type: String,
     required: [true, "Your username is required"],

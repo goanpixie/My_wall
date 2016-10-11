@@ -1,9 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 	<title>wall</title>
+	Welcome,{{newUser.name}}
+	<br>
+	<br>
 </head>
 <body>
-{{users}}
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Topic</th>
+    <th>Username</th>
+    <th>Posts</th>
+  </tr>
+  <tr ng-repeat="post in posts">
+    <td>{{post.category}}</td>
+    <td>{{post.topic}}</td>
+    <td>{{post.name}}</td>
+    <td>{{}}</td>
+  </tr>
+  </table>
+
+
+<h2>Add a new topic:</h2>
+<form ng-submit="addPost()">
+	Topic:<input type="text" ng-model="newPost.topic"><br>
+    Description:<input type="text" ng-model="newPost.description"><br>
+    Category: <select ng-model="newPost.category"><br>
+       <option> Javascript</option>
+       <option> Ruby on Rails</option>
+       <option> MEAN-stack</option>
+       <option> HTML5 </option>
+       <option> CSS3 </option>
+    </select>	
+      <input type="submit" value="Submit">
+</form>
+
 </body>
 </html>
