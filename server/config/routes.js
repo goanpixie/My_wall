@@ -10,3 +10,5 @@ module.exports = function(app){
 	// app.get('/getWishByUser/:_user', users.getWishByUser)
 
 }
+
+//routes describe connection btw front end and backend
