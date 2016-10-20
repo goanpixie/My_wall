@@ -1,3 +1,4 @@
+//all the methods go in here with their logic written on the backend controller
 app.factory('userFactory', ['$http', function($http) {
     function userFactory() {
 
