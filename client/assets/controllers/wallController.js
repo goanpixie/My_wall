@@ -23,7 +23,7 @@ app.controller('wallController', ['$scope', '$location', 'userFactory', '$cookie
     $scope.addPost = function() {
         $scope.newPost.userid = $scope.newUser._id;
         $scope.newPost.name = $scope.newUser.name;
-        userFactory.addPost($scope.addPost, function(data) {
+        userFactory.addPost($scope.newPost, function(data) {
             console.log(data)
             $scope.messages = [];
             if (data.errors) {
