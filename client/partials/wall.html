@@ -35,11 +35,11 @@ tr:nth-child(even) {
     <th>Username</th>
     <th>Posts</th>
   </tr>
-  <tr ng-repeat="post in posts | orderBy:'-createdAt' |filter: search">
+  <tr ng-repeat="post in posts | orderBy:'_createdAt' |filter: search">
     <td>{{post.category}}</td>
-    <td>{{post.topic}}</td>
+    <td>{{post.topic}}</button></td>
     <td>{{post._user[0].name}}</td>
-    <td>{{}}</td>
+    <td></td>
   </tr>
   </table>
 
@@ -57,6 +57,9 @@ tr:nth-child(even) {
     </select>	
       <input type="submit" value="Submit">
 </form>
+ <div ng-if="errors">
+        <p ng-repeat="message in messages">{{message}}</p>
+    </div>
 
 </body>
 </html>

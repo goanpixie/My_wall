@@ -11,10 +11,19 @@ app.controller('wallController', ['$scope', '$location', 'userFactory', '$cookie
         $location.url('/')
     }
 
+    // var display = function(){
+    //     userFactory.getUser(function(data){
+    //         $scope.user = data;
+    //         console.log($scope.user)
+
+    //     })
+    // }
+
 
     $scope.getUser = function() {
         userFactory.getUser(function(data) {
             $scope.users = data
+             console.log($scope.user)
         })
     };
     $scope.getUser();
@@ -41,10 +50,20 @@ app.controller('wallController', ['$scope', '$location', 'userFactory', '$cookie
 
     $scope.getPost = function() {
         userFactory.getPost(function(data) {
-            $scope.posts= data
+            $scope.posts = data
         })
     };
     $scope.getPost();
+
+
+
+    $scope.findPost = function(id) {
+        console.log("I am @front end Controller")
+        userFactory.findPost(id, function() {
+            $scope.getposts();
+        })
+    }
+
 
 
 

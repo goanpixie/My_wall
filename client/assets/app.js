@@ -12,6 +12,11 @@ app.config(function($routeProvider){
             controller: 'wallController'
         })
 
+        .when('/postcomment', {
+            templateUrl: 'partials/postcomment.html',
+            controller: 'postcommentController'
+        })
+
 
         .otherwise({
         redirectTo:'/home'

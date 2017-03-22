@@ -15,5 +15,13 @@
     "mongoose": "^4.6.3"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goanpixie/My_wall.git"
+  },
+  "bugs": {
+    "url": "https://github.com/goanpixie/My_wall/issues"
+  },
+  "homepage": "https://github.com/goanpixie/My_wall#readme",
   "description": ""
 }

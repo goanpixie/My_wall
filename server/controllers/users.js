@@ -67,7 +67,7 @@ function UsersController() {
 
 
     this.getPost = function(req, res) {
-        Post.find({}).populate('_user').exec(function(err, posts) {
+        Post.find({}).populate('_post').exec(function(err, posts) {
             if (err) {
                 res.json(err)
             } else {
