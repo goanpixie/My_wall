@@ -20,6 +20,8 @@ tr:nth-child(even) {
 }
 </style>
 	<title>wall</title>
+
+  <button ng-click="logout()">Back Home</button><br>  
 	Welcome,{{newUser.name}}
 	<br>
 	<br>
@@ -38,8 +40,8 @@ tr:nth-child(even) {
   <tr ng-repeat="post in posts | orderBy:'_createdAt' |filter: search">
     <td>{{post.category}}</td>
     <td>{{post.topic}}</button></td>
-    <td>{{post._user[0].name}}</td>
-    <td></td>
+    <td>{{post}}</td>
+    <td>{{post._user[0]._post.length}}</td>
   </tr>
   </table>
 

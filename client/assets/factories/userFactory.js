@@ -32,6 +32,11 @@ app.factory('userFactory', ['$http', function($http) {
             })
         }
 
+           this.clearuser = function(callback){
+            user = {}
+            callback(user)
+        }
+
 }
 
     return new userFactory();

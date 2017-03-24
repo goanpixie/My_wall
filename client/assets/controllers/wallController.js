@@ -11,14 +11,6 @@ app.controller('wallController', ['$scope', '$location', 'userFactory', '$cookie
         $location.url('/')
     }
 
-    // var display = function(){
-    //     userFactory.getUser(function(data){
-    //         $scope.user = data;
-    //         console.log($scope.user)
-
-    //     })
-    // }
-
 
     $scope.getUser = function() {
         userFactory.getUser(function(data) {
@@ -30,11 +22,15 @@ app.controller('wallController', ['$scope', '$location', 'userFactory', '$cookie
 
 
     $scope.addPost = function() {
+        console.log($scope.newPost)
         $scope.newPost.userid = $scope.newUser._id;
         $scope.newPost.name = $scope.newUser.name;
         userFactory.addPost($scope.newPost, function(data) {
+            console.log("***********")
             console.log(data)
+             console.log("***********")
             $scope.messages = [];
+            $scope.newPost = {}
             if (data.errors) {
                 $scope.errors = true;
                 for (err in data.errors) {
@@ -42,15 +38,20 @@ app.controller('wallController', ['$scope', '$location', 'userFactory', '$cookie
                     $scope.messages.push(data.errors[err].message)
                 }
             }
-
-        })
+        $scope.newPost = {}
         $scope.getPost();
+        })
+        
     }
 
 
     $scope.getPost = function() {
         userFactory.getPost(function(data) {
+              console.log("-------------------")
+            console.log(data)
+             console.log("---------------------")
             $scope.posts = data
+            
         })
     };
     $scope.getPost();
@@ -62,6 +63,13 @@ app.controller('wallController', ['$scope', '$location', 'userFactory', '$cookie
         userFactory.findPost(id, function() {
             $scope.getposts();
         })
+    }
+
+        $scope.logout = function(){
+        userFactory.clearuser(function(data){
+            $scope.user = data;
+        })
+        $location.url('/home')
     }
 
 

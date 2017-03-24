@@ -40,29 +40,27 @@ function UsersController() {
 
      this.addPost = function(req, res) {
         console.log(req.body)
-        var newPost = Post({ _user: req.body.userid, topic: req.body.topic, description: req.body.description, category: req.body.category })
+        Post.findOne({_id: req.body.userid}, function(err,message){
+            var newPost = Post({ name: req.body.name, topic: req.body.topic, description: req.body.description, category: req.body.category })
         console.log(newPost)
-        newPost.save(function(err) {
-            if (err) {
-                res.json(err)
-            } else {
-                User.findOne({ _id: req.body.userid, name: req.body.name }, function(err, user) {
-                    if (err) {
-                        res.json(err)
-                    } else {
-                        user._post.push(newPost)
-                        user.save(function(err) {
+                        newPost._user = req.body.userid;
+                        user._posts.push(newPost)
+                        newPost.save(function(err) {
                             if (err) {
                                 res.json(err)
                             } else {
-                                   res.send()
-                                        }
-                                    })
-                                }
-                            })
-                        }
-                    })
-            }
+                                user.save(function(err){
+                                    if(err){
+                                        res.json(err)
+                                    }
+                                    else{
+                                    res.json(newPost)
+                                    }
+                                });
+                            }
+                        })
+                    });
+                }
 
 
 
